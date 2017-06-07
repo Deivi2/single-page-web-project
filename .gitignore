@@ -1,3 +1,4 @@
+.idea/
 # Numerous always-ignore extensions
 *.diff
 *.err
@@ -10,7 +11,7 @@
 *~
 *.sass-cache
 node_modules/
-.tmp/
+
 
 # OS or Editor folders
 .DS_Store
