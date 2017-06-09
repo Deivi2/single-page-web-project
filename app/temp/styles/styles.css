@@ -450,6 +450,7 @@ a{
 }
 
 .large-hero__text-content {
+  padding-top: 100px;
   position: absolute;
   top: 50%;
   -webkit-transform: translateY(-50%);
@@ -457,6 +458,13 @@ a{
   left: 0;
   width: 100%;
   text-align: center;
+}
+
+@media (min-width: 800px) {
+
+  .large-hero__text-content {
+    padding-top: 60px
+  }
 }
 
 .large-hero__title {
@@ -1091,5 +1099,250 @@ a{
     display: inline;
     margin-bottom: 0;
     margin-right: 1.4rem
+  }
+}
+
+.site-header {
+  padding: 10px 0;
+  /*absolute will just take space how much it need to adjust it content*/
+  position: absolute;
+  width: 100%;
+  /* to make is seen after overlaping with position: absolute;
+   higher z-index element will be placed on top lover z-index element with
+   z-index: 2 command */
+  z-index: 2;
+
+  /*makes menu transparent color to fade in*/
+  transition: background-color .3s ease-out;
+
+
+}
+
+/*be using rgba we can apply transperancy on last element like .30%
+  and post css plugin name postcss-hexrgba gives posability to include hex into rgba
+   */
+
+@media (min-width: 800px) {
+
+  .site-header {
+    background-color: rgba(47,85,114, .3)
+  }
+}
+
+.site-header--is-expanded{
+  background-color: rgba(47,85,114, .55);
+}
+
+@media (min-width: 800px) {
+
+  .site-header__btn-container {
+    float: right
+  }
+}
+
+.site-header__logo {
+  position: absolute;
+  top: 0;
+  left: 50%;/*element transform below after left: 50% push -50% back of his size */
+  -webkit-transform: translateX(-50%) scale(.8);
+          transform: translateX(-50%) scale(.8);/*at the moment element stays at transform-origin: 50% 50%
+    we want to change in to put logo up*/
+  -webkit-transform-origin: 50% 0%;
+          transform-origin: 50% 0%;
+  background-color: #2f5572;
+  padding: 25px 36px;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__logo {
+    left: auto;
+    -webkit-transform: translateX(0);
+            transform: translateX(0)
+  }
+}
+
+.site-header__logo__graphic {/*hides the text*/
+  text-indent: -9999px;
+}
+
+.site-header__menu-content{/*display: none;
+      opacity : 0 hides element on transition .3 ease out style and z-index -10 that
+      hides them to not exendently be clicked and we muct use position relative in this case,
+      othervise browser will ignore z-index value. this transform: scale(1.2); is effect to zoom element*/
+  opacity: 0;
+  transition: all .3s ease-out;
+  position: relative;
+  z-index: -10;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  padding-top: 90px;
+  text-align: center;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__menu-content{
+    opacity: 1;
+    z-index: 1;
+    padding-top: 0;
+    -webkit-transform: scale(1);
+            transform: scale(1)
+  }
+}
+
+.site-header__menu-content--is-visible{/* display: block;
+     not this will show content when it ready to be visible */
+  opacity: 1;
+  z-index: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.site-header__menu-icon{
+  width: 20px;
+  height: 20px;
+  position: absolute;/*this is set up to make is overlap on top because we had z-index in menu_content  */
+  z-index: 10;
+  top: 10px;
+  right: 10px;
+}
+
+/* Adds element before with ::before and content: "" */
+
+.site-header__menu-icon::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;/*middle point of this element set to left corner*/
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+.site-header__menu-icon__middle{
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transition: all .3s ease-out;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
+}
+
+.site-header__menu-icon::after{
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 0;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  -webkit-transform-origin: 0 100%;
+          transform-origin: 0 100%;
+  transition: -webkit-transform .3s ease-out;
+  transition: transform .3s ease-out;
+  transition: transform .3s ease-out, -webkit-transform .3s ease-out;
+}
+
+@media (min-width: 800px) {
+
+  .site-header__menu-icon{
+    display: none
+  }
+}
+
+.site-header__menu-icon--close-x::before{/*turn element 45degree and scaleX is doubling is width by 1.25% */
+  -webkit-transform: rotate(45deg) scaleX(1.25);
+          transform: rotate(45deg) scaleX(1.25);
+}
+
+.site-header__menu-icon--close-x .site-header__menu-icon__middle{
+  opacity: 0;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.site-header__menu-icon--close-x::after{/*tanslateY alave to adjust coordinates */
+  -webkit-transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+          transform: rotate(-45deg) scaleX(1.25) translateY(1px);
+}
+
+.primary-nav{
+
+  padding-top: 10px;
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav{
+    padding-top: 0
+  }
+}
+
+.primary-nav--pull-right{
+  margin-bottom: 10px;
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav--pull-right{
+    float: right
+  }
+}
+
+.primary-nav ul{
+  margin: 0;
+  padding: 0;
+}
+
+.primary-nav li{
+  list-style: none;
+  display: inline-block;
+  padding-right: 7px;
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav li{
+    padding-right: 20px;
+    display: inline
+  }
+}
+
+.primary-nav li:last-child{
+  padding-right: 0;
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav li:last-child{
+    padding-right: 20px
+  }
+}
+
+.primary-nav a {
+  color: white;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 5px 8px;
+  font-size: .8rem;
+  background-color: rgba(47,85,114, .5);
+}
+
+@media (min-width: 800px) {
+
+  .primary-nav a {
+    position: relative;
+    top: 10px;
+    font-size: 1rem;
+    background-color: transparent
   }
 }
