@@ -50,8 +50,12 @@
       top: 10px;
       font-size: 1rem;
       background-color: transparent;
+
+      /*select only if it has this class*/
+
+      &.is-current-link{
+        color: #fabb69;
+      }
     }
-
-
   }
 }
